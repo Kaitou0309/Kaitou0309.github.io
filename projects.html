@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Machine learning, data science, and programming projects by Kongkun Chen." />
+  <title>Projects | Kongkun Chen</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="logo" href="index.html">Kongkun Chen</a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html" aria-current="page">Projects</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <header class="page-header">
+      <div class="container">
+        <p class="eyebrow">Projects</p>
+        <h1>Selected machine learning and systems work</h1>
+        <p class="lead">Projects centered on applied ML engineering, scientific data, and the programming foundations behind reliable software.</p>
+      </div>
+    </header>
+
+    <section class="page-content container">
+      <div class="project-list">
+        <article class="project-card featured">
+          <img src="assets/images/bt-super-resolution/hurricane-case-overview.png" alt="Satellite brightness temperature super-resolution comparison and residual maps" />
+          <div class="card-body">
+            <div class="project-meta">Featured | Scientific ML</div>
+            <h2>Satellite Brightness Temperature Super-Resolution</h2>
+            <p>
+              Technical project documentation for reconstructing high-resolution microwave brightness
+              temperature fields with RDN, RRDN, and GAN variants. Covers HDF5 data pipelines,
+              architecture design, HPC training, reproducible evaluation, and hurricane case studies.
+            </p>
+            <div class="tag-row"><span>TensorFlow</span><span>HDF5</span><span>Super-Resolution</span><span>Remote Sensing</span></div>
+            <a class="text-link" href="projects/bt-super-resolution.html">Read technical documentation &rarr;</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-meta">Scientific ML | Remote Sensing</div>
+          <h2>CrIS Temperature Retrieval</h2>
+          <p>
+            Built a regression pipeline for atmospheric temperature profiles from hyperspectral CrIS
+            measurements. Reduced the inputs to 40 principal components, compared ANN, CNN, and
+            eight-block ResNet models, and used residual analysis to locate high-variance atmospheric layers.
+          </p>
+          <div class="tag-row"><span>TensorFlow</span><span>PCA</span><span>ResNet</span><span>Scientific ML</span></div>
+          <span class="status">R² = 0.78</span>
+        </article>
+
+        <article class="project-card">
+          <div class="project-meta">Deep Learning | NLP</div>
+          <h2>Transformer Encoder &amp; Character-Level Language Model</h2>
+          <p>
+            Implemented a Transformer encoder from scratch with positional embeddings, self-attention,
+            residual connections, and feed-forward layers. Trained a causal character-level model on
+            text8 using shifted targets and masked attention.
+          </p>
+          <div class="tag-row"><span>PyTorch</span><span>Transformers</span><span>Self-Attention</span><span>NLP</span></div>
+          <span class="status">4.65 development perplexity</span>
+        </article>
+
+        <article class="project-card">
+          <div class="project-meta">Machine Learning Foundations</div>
+          <h2>PCA, Softmax Regression &amp; Neural Networks</h2>
+          <p>
+            Implemented PCA from scratch for dimensionality reduction, variance analysis, visualization,
+            and reconstruction. Built softmax regression and a modular feed-forward neural network for
+            MNIST classification.
+          </p>
+          <div class="tag-row"><span>NumPy</span><span>SciPy</span><span>Scikit-learn</span><span>MNIST</span></div>
+          <span class="status">92.18% softmax test accuracy</span>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Kongkun Chen.</p>
+      <a href="index.html">Home</a>
+    </div>
+  </footer>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

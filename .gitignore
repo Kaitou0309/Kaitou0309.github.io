@@ -1,0 +1,68 @@
+# Operating system and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Python caches and environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+env/
+ENV/
+
+# Machine learning models and checkpoints
+*.h5
+*.hdf5
+*.keras
+*.weights.h5
+*.ckpt
+*.ckpt.*
+*.pb
+*.onnx
+checkpoints/
+checkpoint/
+models/
+weights/
+
+# Numeric data and prediction caches
+*.npz
+*.npy
+*.pkl
+*.pickle
+*.parquet
+cache/
+cache_preds/
+predictions/
+data/
+datasets/
+
+# Experiment output and logs
+*.log
+*.out
+*.err
+logs/
+pipeline_logs/
+runs/
+outputs/
+experiment_outputs/
+wandb/
+
+# Build systems not used by this static site
+node_modules/
+dist/
+build/
+.env
+.env.*
+
+# Large archives
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z

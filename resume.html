@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Online resume for Kongkun Chen, a new graduate seeking machine learning engineering and data science roles." />
+  <title>Resume | Kongkun Chen</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="logo" href="index.html">Kongkun Chen</a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="resume.html" aria-current="page">Resume</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <header class="page-header">
+      <div class="container">
+        <p class="eyebrow">Online Resume</p>
+        <h1>Kongkun Chen</h1>
+        <p class="lead">New graduate seeking full-time Machine Learning Engineer, Data Scientist, and Applied ML roles.</p>
+        <div class="button-row">
+          <a class="button primary" href="assets/files/kongkun-chen-resume.pdf">Download PDF Resume</a>
+          <a class="button secondary" href="mailto:kchen137@umd.edu">Contact</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="page-content container">
+      <div class="resume-layout">
+        <aside class="resume-sidebar">
+          <section class="resume-panel">
+            <h2>Contact</h2>
+            <p><a class="text-link" href="mailto:kchen137@umd.edu">kchen137@umd.edu</a></p>
+            <p><a class="text-link" href="tel:+13012734175">301-273-4175</a></p>
+            <p><a class="text-link" href="https://github.com/Kaitou0309">github.com/Kaitou0309</a></p>
+            <p><a class="text-link" href="https://www.linkedin.com/in/kavi-chen/">linkedin.com/in/kavi-chen</a></p>
+          </section>
+          <section class="resume-panel">
+            <h2>Core Tools</h2>
+            <ul class="plain-list">
+              <li>Python</li>
+              <li>TensorFlow / Keras</li>
+              <li>PyTorch / Scikit-learn</li>
+              <li>NumPy / SciPy / Pandas</li>
+              <li>Git / Linux</li>
+              <li>SLURM / HPC</li>
+            </ul>
+          </section>
+        </aside>
+
+        <div>
+          <section class="resume-section">
+            <h2>Summary</h2>
+            <p>
+              New graduate with hands-on experience building deep learning workflows for satellite
+              remote sensing data. Comfortable moving from data inspection and model training to
+              quantitative evaluation, debugging, visualization, and reproducible HPC execution.
+            </p>
+          </section>
+
+          <section class="resume-section">
+            <h2>Education</h2>
+            <article class="resume-item">
+              <h3>University of Maryland, College Park</h3>
+              <div class="resume-meta">B.S. Applied Mathematics and Computer Science - Machine Learning | August 2026</div>
+              <p>Meritorious Award in SCUDEM and Dean's List, 2022-2026.</p>
+            </article>
+          </section>
+
+          <section class="resume-section">
+            <h2>Technical Skills</h2>
+            <article class="resume-item">
+              <h3>Machine Learning</h3>
+              <p>TensorFlow, Keras, PyTorch, Scikit-learn, deep learning, CNNs, super-resolution, GANs, model evaluation</p>
+            </article>
+            <article class="resume-item">
+              <h3>Programming &amp; Data</h3>
+              <p>Python, Java, Rust, C/C++, MATLAB, OCaml, NumPy, SciPy, Pandas, MySQL, NoSQL, MongoDB</p>
+            </article>
+            <article class="resume-item">
+              <h3>Tools &amp; Workflow</h3>
+              <p>Linux, Git, SLURM, HPC/GPU training, TFRecord, Matplotlib, Seaborn, VS Code</p>
+            </article>
+            <article class="resume-item">
+              <h3>Certification</h3>
+              <p>Society of Actuaries Exam P (Probability), passed July 2025</p>
+            </article>
+          </section>
+
+          <section class="resume-section">
+            <h2>Experience</h2>
+            <article class="resume-item">
+              <h3>Machine Learning Research Intern | ESSIC</h3>
+              <div class="resume-meta">June 2025-Present | College Park, Maryland</div>
+              <ul>
+                <li>Built scalable TensorFlow pipelines with tf.data and TFRecord for streamed GPU training, on-the-fly augmentation, and reproducible seasonal splits.</li>
+                <li>Developed and benchmarked RDN, RRDN, and GAN-based models for four-times super-resolution of satellite brightness temperature data.</li>
+                <li>Compared MAE, SSIM-based composite, and physics-informed gradient losses for numerical accuracy and structural fidelity.</li>
+                <li>Built an ablation and evaluation workflow using RMSE, PSNR, SSIM, bias, latency, per-scene diagnostics, and hard-scene analysis.</li>
+              </ul>
+            </article>
+          </section>
+
+          <section class="resume-section">
+            <h2>Projects</h2>
+            <article class="resume-item">
+              <h3><a class="text-link" href="projects/bt-super-resolution.html">Satellite Brightness Temperature Super-Resolution</a></h3>
+              <p>End-to-end scientific ML project comparing residual dense generators, composite SSIM objectives, adversarial training, and hurricane-specific validation.</p>
+            </article>
+            <article class="resume-item">
+              <h3>CrIS Temperature Retrieval</h3>
+              <p>Compared ANN, CNN, and ResNet regressors on PCA-compressed hyperspectral inputs, achieving R² = 0.78 with a custom MAE and gradient loss.</p>
+            </article>
+            <article class="resume-item">
+              <h3>Transformer Encoder &amp; Character-Level Language Model</h3>
+              <p>Implemented a causal Transformer model from scratch in PyTorch and achieved 4.65 development perplexity on text8.</p>
+            </article>
+            <article class="resume-item">
+              <h3>PCA, Softmax Regression &amp; Neural Networks</h3>
+              <p>Implemented PCA, softmax regression, and a feed-forward neural network, reaching 92.18% and 90.93% MNIST test accuracy.</p>
+            </article>
+          </section>
+
+          <section class="resume-section">
+            <h2>Selected Coursework</h2>
+            <p>Natural Language Processing, Machine Learning, Algorithms, Data Science, Database Design, and Applied Probability &amp; Statistics.</p>
+          </section>
+
+          <section class="resume-section">
+            <h2>Contact</h2>
+            <p>Open to full-time ML engineering, data science, and applied ML opportunities.</p>
+            <a class="text-link" href="mailto:kchen137@umd.edu">kchen137@umd.edu</a>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Kongkun Chen.</p>
+      <a href="index.html">Home</a>
+    </div>
+  </footer>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
