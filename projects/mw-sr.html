@@ -58,9 +58,9 @@
             brightness temperature values.
           </p>
           <figure class="figure-panel">
-            <img src="../assets/images/mw-sr/hurricane-case-overview.png" alt="Low-resolution microwave input, model prediction, high-resolution target, and residual diagnostics for a hurricane scene" />
+            <img src="../assets/images/mw-sr/paired-hurricane-example.png" alt="Paired hurricane example comparing low-resolution input, bilinear interpolation, MW-SR-GAN prediction, and high-resolution truth" />
             <figcaption>
-              Example hurricane-scene inspection: low-resolution input, learned reconstruction, high-resolution target, and residual diagnostics.
+              Paired hurricane example from MW-SR: low-resolution input, bilinear interpolation, MW-SR-GAN prediction, and aligned high-resolution truth.
             </figcaption>
           </figure>
         </section>
@@ -136,6 +136,21 @@
             <article class="mini-card"><h3>Composite SSIM</h3><p>The loss combines pixel fidelity with local structure, contrast, and luminance preservation.</p></article>
             <article class="mini-card"><h3>Patch discriminator</h3><p>GAN fine-tuning used patch-level feedback so storm boundaries and local thermal gradients mattered during training.</p></article>
           </div>
+        </section>
+
+
+        <section class="content-section" id="visual-results">
+          <p class="eyebrow">Visual Results</p>
+          <h2>Reconstruction and residual behavior</h2>
+          <p>
+            The paired examples make the modeling goal concrete: preserve the broad microwave temperature field while restoring sharper eyewall and rainband organization. The reconstruction and residual figure adds the next layer of evaluation by showing where each model still over- or under-predicts relative to the high-resolution target.
+          </p>
+          <figure class="figure-panel wide-figure">
+            <img src="../assets/images/mw-sr/reconstruction-residual-models.png" alt="MW-SR and MW-SR-GAN reconstructions with residual maps and pixel-error distributions" loading="lazy" />
+            <figcaption>
+              MW-SR and MW-SR-GAN reconstruction diagnostics: model outputs, residual maps, and error distributions make it easier to inspect localized storm-structure errors rather than relying only on scalar metrics.
+            </figcaption>
+          </figure>
         </section>
 
         <section class="content-section" id="evidence">
@@ -237,6 +252,25 @@
           </div>
         </section>
 
+
+        <section class="content-section" id="operational">
+          <p class="eyebrow">Operational Examples</p>
+          <h2>Testing the workflow on storm scenes</h2>
+          <p>
+            MW-SR also includes operational-style storm examples where paired high-resolution truth is not available. These cases are useful for qualitative review: they test whether the released model and plotting workflow can produce meteorologically interpretable outputs on real storm scenes beyond the simulated AMSR2 pairs.
+          </p>
+          <div class="figure-grid operational-grid">
+            <figure class="figure-panel">
+              <img src="../assets/images/mw-sr/operational-super-typhoon-sinlaku.png" alt="Original ATMS brightness temperature field and MW-SR-GAN prediction for Super Typhoon Sinlaku" loading="lazy" />
+              <figcaption>Operational storm example: original ATMS brightness-temperature field and MW-SR-GAN prediction for Super Typhoon Sinlaku.</figcaption>
+            </figure>
+            <figure class="figure-panel">
+              <img src="../assets/images/mw-sr/operational-developing-tropical-cyclone.png" alt="VIIRS context, original ATMS field, and MW-SR-GAN prediction for a developing tropical cyclone" loading="lazy" />
+              <figcaption>Developing tropical cyclone example with context imagery, original ATMS field, and MW-SR-GAN prediction.</figcaption>
+            </figure>
+          </div>
+        </section>
+
         <section class="content-section" id="repo">
           <p class="eyebrow">Public Work</p>
           <h2>Where to review the code</h2>
@@ -285,10 +319,12 @@
         <a href="#problem">Problem</a>
         <a href="#approach">Approach</a>
         <a href="#architecture">Architecture</a>
+        <a href="#visual-results">Visual Results</a>
         <a href="#evidence">Training Evidence</a>
         <a href="#results">Results</a>
         <a href="#spectral">PSD Analysis</a>
         <a href="#skills">Skills</a>
+        <a href="#operational">Operational Examples</a>
         <a href="#repo">MW-SR Repo</a>
         <a href="#takeaways">Takeaways</a>
       </aside>
