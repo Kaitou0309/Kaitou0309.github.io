@@ -2,7 +2,7 @@
 
 This repository contains a static GitHub Pages portfolio for Kongkun Chen, a new graduate seeking full-time Machine Learning Engineer, Data Scientist, and Applied ML roles.
 
-The site highlights applied deep learning, scientific computing, CISESS / ESSIC research experience, and the Microwave Super-Resolution Model (MW-SR) project. It uses only HTML, CSS, and a small amount of vanilla JavaScript.
+The site highlights applied deep learning, scientific computing, and the Microwave Super-Resolution Model (MW-SR) project. It uses only HTML, CSS, and a small amount of vanilla JavaScript.
 
 ## Website Structure
 
@@ -10,7 +10,6 @@ The site highlights applied deep learning, scientific computing, CISESS / ESSIC 
 .
 ├── index.html
 ├── projects.html
-├── research.html
 ├── resume.html
 ├── projects/
 │   └── mw-sr.html
