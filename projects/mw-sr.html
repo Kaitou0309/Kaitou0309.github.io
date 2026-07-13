@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Recruiter-friendly case study for MW-SR, a microwave super-resolution machine learning project by Kongkun Chen." />
+  <title>MW-SR Case Study | Kongkun Chen</title>
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="logo" href="../index.html">Kongkun Chen</a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html" aria-current="page">Projects</a></li>
+        <li><a href="../research.html">Research</a></li>
+        <li><a href="../resume.html">Resume</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <header class="project-hero">
+      <div class="project-hero-inner container">
+        <a class="breadcrumb" href="../projects.html">&larr; All projects</a>
+        <p class="eyebrow">Featured Portfolio Project | Scientific ML</p>
+        <h1>MW-SR: Microwave Super-Resolution</h1>
+        <p class="lead">
+          I built a deep learning workflow that sharpens low-resolution microwave satellite imagery
+          into higher-resolution brightness temperature fields, with reproducible evaluation and public-facing model artifacts.
+        </p>
+        <div class="tag-row" aria-label="Project technologies">
+          <span>TensorFlow/Keras</span><span>GANs</span><span>Remote Sensing</span>
+          <span>HDF5</span><span>Scientific ML</span><span>Evaluation Pipelines</span>
+        </div>
+        <div class="project-actions">
+          <a class="button primary" href="https://github.com/Kaitou0309/MW-SR" target="_blank" rel="noopener noreferrer">View MW-SR on GitHub</a>
+          <a class="button secondary" href="https://github.com/Kaitou0309/MW-SR/releases" target="_blank" rel="noopener noreferrer">Model Releases</a>
+          <a class="button secondary" href="#results">See Results</a>
+          <a class="button secondary" href="../resume.html">Resume</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="page-content container project-page-layout">
+      <article class="project-documentation">
+        <section class="content-section" id="overview">
+          <p class="eyebrow">Overview</p>
+          <h2>What this project shows</h2>
+          <p>
+            MW-SR is my strongest end-to-end machine learning project. It combines scientific data handling,
+            model design, GPU training, careful evaluation, and public repository preparation. The goal is not just
+            to make a sharper image, but to improve spatial detail while preserving physically meaningful microwave
+            brightness temperature values.
+          </p>
+          <figure class="figure-panel">
+            <img src="../assets/images/mw-sr/hurricane-case-overview.png" alt="Low-resolution microwave input, model prediction, high-resolution target, and residual diagnostics for a hurricane scene" />
+            <figcaption>
+              Example hurricane-scene inspection: low-resolution input, learned reconstruction, high-resolution target, and residual diagnostics.
+            </figcaption>
+          </figure>
+        </section>
+
+        <section class="content-section" id="snapshot">
+          <p class="eyebrow">Project Snapshot</p>
+          <h2>Recruiter summary</h2>
+          <div class="model-grid">
+            <article class="mini-card">
+              <span class="model-type">Problem</span>
+              <h3>Sharper microwave imagery</h3>
+              <p>Microwave observations reveal storm and precipitation structure, but their spatial resolution is limited by sensor footprint and scanning geometry.</p>
+            </article>
+            <article class="mini-card">
+              <span class="model-type">My Role</span>
+              <h3>End-to-end ML builder</h3>
+              <p>I worked across data preparation, model implementation, training, evaluation scripts, plotting, documentation, and release cleanup.</p>
+            </article>
+            <article class="mini-card">
+              <span class="model-type">Impact</span>
+              <h3>Reusable research code</h3>
+              <p>The public MW-SR repository includes model loaders, inference scripts, metrics, examples, documentation, and selected downloadable models.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="content-section" id="problem">
+          <p class="eyebrow">Problem</p>
+          <h2>Why this matters</h2>
+          <p>
+            Visible and infrared imagery can miss precipitation structures hidden beneath clouds. Microwave sensors help reveal those structures, but the images are often coarse or blurry. This project explores whether a single microwave brightness temperature channel can be super-resolved into a sharper field that still respects the original physical measurement.
+          </p>
+          <div class="notice">
+            <strong>Machine learning framing:</strong> supervised image-to-image regression from low-resolution microwave brightness temperature input to aligned high-resolution target output.
+          </div>
+        </section>
+
+        <section class="content-section" id="approach">
+          <p class="eyebrow">Approach</p>
+          <h2>What I built</h2>
+          <div class="troubleshooting-list">
+            <article>
+              <h3>1. Data pipeline</h3>
+              <p>Prepared HDF5-based low-resolution and high-resolution training pairs, with normalization and validation checks for model-ready arrays.</p>
+            </article>
+            <article>
+              <h3>2. Model families</h3>
+              <p>Compared residual dense models, residual-in-residual dense generators, composite SSIM objectives, physics-inspired losses, and GAN refinement.</p>
+            </article>
+            <article>
+              <h3>3. Evaluation workflow</h3>
+              <p>Measured RMSE, bias, PSNR, SSIM, latency, residual maps, and spatial-frequency behavior across standard and hurricane-specific validation scenes.</p>
+            </article>
+            <article>
+              <h3>4. Release preparation</h3>
+              <p>Organized a public repository with beginner examples, model-loading utilities, release notes, model artifacts, documentation, tests, and reproducibility guidance.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="content-section" id="skills">
+          <p class="eyebrow">Skills Demonstrated</p>
+          <h2>Engineering signals for ML roles</h2>
+          <div class="metrics-grid">
+            <article class="mini-card"><h3>Deep Learning</h3><p>TensorFlow/Keras models, RRDN generators, GAN training, loss-function experiments, checkpoint selection.</p></article>
+            <article class="mini-card"><h3>Data Engineering</h3><p>HDF5 data handling, normalization, batch inference, file validation, and artifact organization.</p></article>
+            <article class="mini-card"><h3>Scientific Evaluation</h3><p>Metric definitions, residual analysis, hurricane case studies, and power spectral density diagnostics.</p></article>
+            <article class="mini-card"><h3>Reproducibility</h3><p>CLI scripts, configuration files, tests, README documentation, and separation of large data from source control.</p></article>
+            <article class="mini-card"><h3>HPC Workflow</h3><p>GPU training, SLURM-style experiment management, long-running job debugging, and resource-aware inference.</p></article>
+            <article class="mini-card"><h3>Communication</h3><p>Technical writing, architecture explanation, recruiter-facing summaries, and figure-driven result interpretation.</p></article>
+          </div>
+        </section>
+
+        <section class="content-section" id="results">
+          <p class="eyebrow">Results</p>
+          <h2>What the experiments suggest</h2>
+          <p>
+            The strongest models were the composite-SSIM RRDN and the GAN-refined version. The GAN variant achieved the best overall reconstruction metrics in the current AMSR2 hurricane validation table, while the composite-SSIM model provided a strong non-adversarial baseline.
+          </p>
+          <div class="table-wrap">
+            <table class="docs-table">
+              <thead>
+                <tr><th>Model</th><th>RMSE</th><th>Bias</th><th>SSIM</th><th>PSNR</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Composite SSIM RRDN, alpha=0.8</td><td>3.3685</td><td>0.0222</td><td>0.8991</td><td>35.2978</td></tr>
+                <tr><td>RRDN-GAN with BatchNorm</td><td>3.1057</td><td>0.0733</td><td>0.9072</td><td>35.9081</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            The full repository contains the scripts and documentation needed to reproduce the current release workflow and inspect model behavior beyond the summary table.
+          </p>
+          <div class="figure-grid">
+            <figure class="figure-panel">
+              <img src="../assets/images/mw-sr/per-scene-metrics.png" alt="MW-SR model metric comparison table and per-scene performance summary" loading="lazy" />
+              <figcaption>Model comparison summary used to compare reconstruction quality across validation scenes.</figcaption>
+            </figure>
+            <figure class="figure-panel">
+              <img src="../assets/images/mw-sr/psd-comparison.png" alt="Power spectral density comparison across MW-SR models" loading="lazy" />
+              <figcaption>Spatial-frequency analysis used to inspect how much fine-scale structure each model restores.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="content-section" id="repo">
+          <p class="eyebrow">Public Work</p>
+          <h2>Where to review the code</h2>
+          <p>
+            This website is intentionally recruiter-friendly. The MW-SR GitHub repository is the detailed technical artifact: it includes the model code, examples, documentation, release assets, and notes on what belongs in source control versus external storage.
+          </p>
+          <div class="artifact-grid">
+            <article>
+              <h3>Good first review path</h3>
+              <ul>
+                <li>Start with the repository README.</li>
+                <li>Open the beginner guide for model loading and prediction examples.</li>
+                <li>Review inference and evaluation scripts for reproducibility.</li>
+                <li>Check releases for selected model artifacts.</li>
+              </ul>
+            </article>
+            <article>
+              <h3>Repository links</h3>
+              <ul>
+                <li><a class="text-link" href="https://github.com/Kaitou0309/MW-SR" target="_blank" rel="noopener noreferrer">MW-SR GitHub repository</a></li>
+                <li><a class="text-link" href="https://github.com/Kaitou0309/MW-SR/releases" target="_blank" rel="noopener noreferrer">Model releases</a></li>
+                <li><a class="text-link" href="https://github.com/Kaitou0309/MW-SR/tree/main/beginner_guide" target="_blank" rel="noopener noreferrer">Beginner guide</a></li>
+                <li><a class="text-link" href="https://github.com/Kaitou0309/MW-SR/tree/main/scripts" target="_blank" rel="noopener noreferrer">Inference and evaluation scripts</a></li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="content-section" id="takeaways">
+          <p class="eyebrow">Takeaways</p>
+          <h2>What I learned</h2>
+          <ul class="check-list">
+            <li>Structural objectives can matter more than simply increasing model depth.</li>
+            <li>GAN refinement can sharpen local storm structures, but it must be evaluated against physical consistency metrics.</li>
+            <li>For scientific ML, plotting, metadata, and reproducibility are part of the model, not an afterthought.</li>
+            <li>Public release work requires careful handling of large data, model artifacts, documentation, and licensing.</li>
+          </ul>
+        </section>
+      </article>
+
+      <aside class="project-toc" aria-label="Project sections">
+        <strong>On this page</strong>
+        <a href="#overview">Overview</a>
+        <a href="#snapshot">Snapshot</a>
+        <a href="#problem">Problem</a>
+        <a href="#approach">Approach</a>
+        <a href="#skills">Skills</a>
+        <a href="#results">Results</a>
+        <a href="#repo">MW-SR Repo</a>
+        <a href="#takeaways">Takeaways</a>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Kongkun Chen.</p>
+      <a href="../projects.html">All projects</a>
+    </div>
+  </footer>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

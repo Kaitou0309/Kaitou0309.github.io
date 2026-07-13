@@ -2,7 +2,7 @@
 
 This repository contains a static GitHub Pages portfolio for Kongkun Chen, a new graduate seeking full-time Machine Learning Engineer, Data Scientist, and Applied ML roles.
 
-The site highlights applied deep learning, scientific computing, CISESS / ESSIC research experience, and the Satellite Brightness Temperature Super-Resolution project. It uses only HTML, CSS, and a small amount of vanilla JavaScript.
+The site highlights applied deep learning, scientific computing, CISESS / ESSIC research experience, and the Microwave Super-Resolution Model (MW-SR) project. It uses only HTML, CSS, and a small amount of vanilla JavaScript.
 
 ## Website Structure
 
@@ -13,14 +13,14 @@ The site highlights applied deep learning, scientific computing, CISESS / ESSIC 
 ├── research.html
 ├── resume.html
 ├── projects/
-│   └── bt-super-resolution.html
+│   └── mw-sr.html
 ├── assets/
 │   ├── css/
 │   │   └── styles.css
 │   ├── js/
 │   │   └── main.js
 │   ├── images/
-│   │   └── bt-super-resolution/
+│   │   └── mw-sr/
 │   └── files/
 ├── .gitignore
 ├── .nojekyll
