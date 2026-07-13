@@ -881,6 +881,14 @@ p {
   gap: 18px;
 }
 
+.wide-figure {
+  grid-column: 1 / -1;
+}
+
+.figure-panel.wide-figure img {
+  background: #ffffff;
+}
+
 .notice {
   padding: 16px 18px;
   color: var(--ink-soft);

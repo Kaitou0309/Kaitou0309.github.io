@@ -40,7 +40,7 @@
         <div class="project-actions">
           <a class="button primary" href="https://github.com/Kaitou0309/MW-SR" target="_blank" rel="noopener noreferrer">View MW-SR on GitHub</a>
           <a class="button secondary" href="https://github.com/Kaitou0309/MW-SR/releases" target="_blank" rel="noopener noreferrer">Model Releases</a>
-          <a class="button secondary" href="#results">See Results</a>
+          <a class="button secondary" href="#evidence">Experiment Evidence</a>
           <a class="button secondary" href="../resume.html">Resume</a>
         </div>
       </div>
@@ -103,34 +103,63 @@
           <h2>What I built</h2>
           <div class="troubleshooting-list">
             <article>
-              <h3>1. Data pipeline</h3>
-              <p>Prepared HDF5-based low-resolution and high-resolution training pairs, with normalization and validation checks for model-ready arrays.</p>
+              <h3>1. HDF5 data pipeline</h3>
+              <p>Prepared paired low-resolution and high-resolution brightness temperature arrays, validated HDF5 structure, and kept large raw data outside Git.</p>
             </article>
             <article>
-              <h3>2. Model families</h3>
+              <h3>2. Normalized inference path</h3>
+              <p>Used training-set normalization statistics before model prediction and denormalized outputs back to Kelvin before metrics and plots.</p>
+            </article>
+            <article>
+              <h3>3. Model families</h3>
               <p>Compared residual dense models, residual-in-residual dense generators, composite SSIM objectives, physics-inspired losses, and GAN refinement.</p>
             </article>
             <article>
-              <h3>3. Evaluation workflow</h3>
+              <h3>4. Evaluation workflow</h3>
               <p>Measured RMSE, bias, PSNR, SSIM, latency, residual maps, and spatial-frequency behavior across standard and hurricane-specific validation scenes.</p>
             </article>
             <article>
-              <h3>4. Release preparation</h3>
+              <h3>5. Release preparation</h3>
               <p>Organized a public repository with beginner examples, model-loading utilities, release notes, model artifacts, documentation, tests, and reproducibility guidance.</p>
             </article>
           </div>
         </section>
 
-        <section class="content-section" id="skills">
-          <p class="eyebrow">Skills Demonstrated</p>
-          <h2>Engineering signals for ML roles</h2>
+        <section class="content-section" id="architecture">
+          <p class="eyebrow">Architecture Choices</p>
+          <h2>How the model was designed for scientific imagery</h2>
           <div class="metrics-grid">
-            <article class="mini-card"><h3>Deep Learning</h3><p>TensorFlow/Keras models, RRDN generators, GAN training, loss-function experiments, checkpoint selection.</p></article>
-            <article class="mini-card"><h3>Data Engineering</h3><p>HDF5 data handling, normalization, batch inference, file validation, and artifact organization.</p></article>
-            <article class="mini-card"><h3>Scientific Evaluation</h3><p>Metric definitions, residual analysis, hurricane case studies, and power spectral density diagnostics.</p></article>
-            <article class="mini-card"><h3>Reproducibility</h3><p>CLI scripts, configuration files, tests, README documentation, and separation of large data from source control.</p></article>
-            <article class="mini-card"><h3>HPC Workflow</h3><p>GPU training, SLURM-style experiment management, long-running job debugging, and resource-aware inference.</p></article>
-            <article class="mini-card"><h3>Communication</h3><p>Technical writing, architecture explanation, recruiter-facing summaries, and figure-driven result interpretation.</p></article>
+            <article class="mini-card"><h3>Residual learning</h3><p>RDN and RRDN blocks learn high-frequency corrections instead of reconstructing the full temperature field from scratch.</p></article>
+            <article class="mini-card"><h3>RRDB trunk</h3><p>Residual-in-residual dense blocks improve feature reuse and gradient flow while supporting deeper generators.</p></article>
+            <article class="mini-card"><h3>No generator BatchNorm</h3><p>Batch Normalization was avoided in the generator to reduce distribution distortion for physical Kelvin-valued data.</p></article>
+            <article class="mini-card"><h3>Bilinear upsampling</h3><p>Bilinear upsampling followed by convolutional refinement was used to avoid checkerboard artifacts from learned upsampling.</p></article>
+            <article class="mini-card"><h3>Composite SSIM</h3><p>The loss combines pixel fidelity with local structure, contrast, and luminance preservation.</p></article>
+            <article class="mini-card"><h3>Patch discriminator</h3><p>GAN fine-tuning used patch-level feedback so storm boundaries and local thermal gradients mattered during training.</p></article>
+          </div>
+        </section>
+
+        <section class="content-section" id="evidence">
+          <p class="eyebrow">Experiment Evidence</p>
+          <h2>Training behavior and checkpoint selection</h2>
+          <p>
+            The project used staged training. The RRDN generator first learned a stable pixel-wise representation with MAE, then was fine-tuned with a Composite SSIM objective to improve local structure. The GAN experiments then tested whether a patch discriminator could further sharpen local storm features.
+          </p>
+          <div class="figure-grid">
+            <figure class="figure-panel wide-figure">
+              <img src="../assets/images/mw-sr/composite-ssim-convergence.png" alt="Composite SSIM RRDN convergence plot showing MAE pretraining followed by Composite SSIM fine-tuning" loading="lazy" />
+              <figcaption>
+                RRDN Composite SSIM convergence. MAE pretraining establishes a stable brightness-temperature reconstruction, then Composite SSIM fine-tuning targets local structural similarity.
+              </figcaption>
+            </figure>
+            <figure class="figure-panel wide-figure">
+              <img src="../assets/images/mw-sr/gan-bn-ablation-convergence.png" alt="RRDN-GAN BatchNorm ablation convergence plot with reconstruction, RMSE, discriminator, and adversarial loss" loading="lazy" />
+              <figcaption>
+                GAN BatchNorm ablation. Both GAN variants reduce reconstruction error, while discriminator/adversarial curves expose the balance problem common in GAN training.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="notice">
+            <strong>Engineering detail:</strong> the convergence plots were parsed from training logs and used to explain checkpoint selection, not just final metrics. This made the training process auditable after long HPC runs.
           </div>
         </section>
 
@@ -138,7 +167,7 @@
           <p class="eyebrow">Results</p>
           <h2>What the experiments suggest</h2>
           <p>
-            The strongest models were the composite-SSIM RRDN and the GAN-refined version. The GAN variant achieved the best overall reconstruction metrics in the current AMSR2 hurricane validation table, while the composite-SSIM model provided a strong non-adversarial baseline.
+            The strongest models were the Composite SSIM RRDN and the GAN-refined version. The GAN variant achieved the best overall reconstruction metrics in the current AMSR2 hurricane validation table, while the Composite SSIM model provided a strong non-adversarial baseline.
           </p>
           <div class="table-wrap">
             <table class="docs-table">
@@ -152,17 +181,59 @@
             </table>
           </div>
           <p>
-            The full repository contains the scripts and documentation needed to reproduce the current release workflow and inspect model behavior beyond the summary table.
+            The figures below compare two levels of evaluation: controlled architecture/loss sweeps and final headline models. Boxplots show per-scene behavior instead of hiding hard cases inside one average number.
           </p>
           <div class="figure-grid">
-            <figure class="figure-panel">
-              <img src="../assets/images/mw-sr/per-scene-metrics.png" alt="MW-SR model metric comparison table and per-scene performance summary" loading="lazy" />
-              <figcaption>Model comparison summary used to compare reconstruction quality across validation scenes.</figcaption>
+            <figure class="figure-panel wide-figure">
+              <img src="../assets/images/mw-sr/per-scene-boxplots-headline.png" alt="Per-scene metric distributions of headline MW-SR models on AMSR2 hurricane-specific data" loading="lazy" />
+              <figcaption>
+                Headline model distributions on AMSR2 hurricane-specific validation scenes. The GAN variants show the strongest aggregate reconstruction behavior across RMSE, PSNR, SSIM, and gradient error.
+              </figcaption>
             </figure>
-            <figure class="figure-panel">
-              <img src="../assets/images/mw-sr/psd-comparison.png" alt="Power spectral density comparison across MW-SR models" loading="lazy" />
-              <figcaption>Spatial-frequency analysis used to inspect how much fine-scale structure each model restores.</figcaption>
+            <figure class="figure-panel wide-figure">
+              <img src="../assets/images/mw-sr/per-scene-boxplots-sweep.png" alt="Per-scene metric distributions for RRDN depth-sweep models" loading="lazy" />
+              <figcaption>
+                Depth and loss sweep distributions. The experiment suggests that adding more RRDB blocks is not automatically better; loss design and local structural supervision matter more.
+              </figcaption>
             </figure>
+          </div>
+        </section>
+
+        <section class="content-section" id="spectral">
+          <p class="eyebrow">Spatial Frequency Analysis</p>
+          <h2>PSD reveals what scalar metrics can miss</h2>
+          <p>
+            Radially averaged power spectral density compares how much spatial power each model preserves at different frequency ranges. Low frequencies represent broad storm-scale temperature patterns, while higher frequencies correspond to sharper edges, eyewall boundaries, rainbands, and small-scale thermal gradients.
+          </p>
+          <div class="figure-grid">
+            <figure class="figure-panel wide-figure">
+              <img src="../assets/images/mw-sr/psd-comparison-headline.png" alt="Radially averaged power spectral density comparison for headline MW-SR models" loading="lazy" />
+              <figcaption>
+                Headline PSD comparison. GAN-refined models remain closer to the ground-truth spectrum across mid- and high-frequency regions, supporting the value of patch-level adversarial feedback.
+              </figcaption>
+            </figure>
+            <figure class="figure-panel wide-figure">
+              <img src="../assets/images/mw-sr/psd-comparison-sweep.png" alt="Radially averaged power spectral density comparison for RRDN sweep models" loading="lazy" />
+              <figcaption>
+                Sweep PSD comparison. The remaining high-frequency gap shows a real information bottleneck: one low-resolution microwave channel cannot uniquely reconstruct every missing physical detail.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="notice">
+            <strong>Scientific takeaway:</strong> PSD helped clarify why physics-inspired gradient loss alone was not enough. Single-channel brightness temperature lacks metadata such as scan angle, viewing geometry, season, atmospheric state, and surface context, so local-structure losses and adversarial feedback were more effective than simply enforcing gradients.
+          </div>
+        </section>
+
+        <section class="content-section" id="skills">
+          <p class="eyebrow">Skills Demonstrated</p>
+          <h2>Engineering signals for ML roles</h2>
+          <div class="metrics-grid">
+            <article class="mini-card"><h3>Deep Learning</h3><p>TensorFlow/Keras models, RRDN generators, GAN training, loss-function experiments, checkpoint selection.</p></article>
+            <article class="mini-card"><h3>Data Engineering</h3><p>HDF5 data handling, normalization, batch inference, file validation, and artifact organization.</p></article>
+            <article class="mini-card"><h3>Scientific Evaluation</h3><p>Metric definitions, residual analysis, hurricane case studies, and power spectral density diagnostics.</p></article>
+            <article class="mini-card"><h3>Reproducibility</h3><p>CLI scripts, configuration files, tests, README documentation, and separation of large data from source control.</p></article>
+            <article class="mini-card"><h3>HPC Workflow</h3><p>GPU training, SLURM-style experiment management, long-running job debugging, and resource-aware inference.</p></article>
+            <article class="mini-card"><h3>Communication</h3><p>Technical writing, architecture explanation, recruiter-facing summaries, and figure-driven result interpretation.</p></article>
           </div>
         </section>
 
@@ -200,7 +271,8 @@
           <ul class="check-list">
             <li>Structural objectives can matter more than simply increasing model depth.</li>
             <li>GAN refinement can sharpen local storm structures, but it must be evaluated against physical consistency metrics.</li>
-            <li>For scientific ML, plotting, metadata, and reproducibility are part of the model, not an afterthought.</li>
+            <li>Convergence plots, PSD curves, and per-scene boxplots make model behavior easier to audit than one leaderboard score alone.</li>
+            <li>For scientific ML, plotting, metadata, normalization, and reproducibility are part of the model workflow, not an afterthought.</li>
             <li>Public release work requires careful handling of large data, model artifacts, documentation, and licensing.</li>
           </ul>
         </section>
@@ -212,8 +284,11 @@
         <a href="#snapshot">Snapshot</a>
         <a href="#problem">Problem</a>
         <a href="#approach">Approach</a>
-        <a href="#skills">Skills</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#evidence">Training Evidence</a>
         <a href="#results">Results</a>
+        <a href="#spectral">PSD Analysis</a>
+        <a href="#skills">Skills</a>
         <a href="#repo">MW-SR Repo</a>
         <a href="#takeaways">Takeaways</a>
       </aside>
